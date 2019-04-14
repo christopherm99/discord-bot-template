@@ -10,7 +10,7 @@ npm i
 ```
 
 ## Configuration
-Create config.js in the repository folder
+Create config.js in the src/ directory:
 ```js
 let prefix = "+";
 let token = "YOUR_BOT_TOKEN"
