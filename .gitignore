@@ -54,7 +54,8 @@ jspm_packages/
 src/config.js
 
 # Face Recognition Models
-src/models
+src/models/*
+!src/models/.gitkeep
 
 # Babel Build Folder
 dist

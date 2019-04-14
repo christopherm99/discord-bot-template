@@ -14,7 +14,7 @@
     "dev": "nodemon --exec npm start"
   },
   "author": "Christopher Milan <chris.m.milan@gmail.com>",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@tensorflow/tfjs-node": "^1.0.3",
     "canvas": "^2.4.1",

@@ -17,6 +17,9 @@ let token = "YOUR_BOT_TOKEN"
 
 export { prefix, token };
 ```
+### Models
+Model shards for `ssd_mobilenetv1` and `face_landmark_68` must also be downloaded and placed into the src/models folder.
+Pre-trained models are available [here](https://github.com/justadudewhohacks/face-api.js/tree/master/weights).
 
 ## Running
 ### ESNext via Babel-Node
