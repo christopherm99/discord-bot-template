@@ -19,8 +19,18 @@ export { prefix, token };
 ```
 
 ## Running
-Run the following
+### ESNext via Babel-Node
+This method substitutes `node` with `babel-node` as this project uses ESNext syntax.
 ```bash
-node index.js
+npm start 
 ```
-
+### Building for Node
+This method utilizes @babel/preset-env alongside browserslist to compile to a current node version. It will build to the dist/ folder.
+```bash
+npm run build
+```
+### Development Mode
+This method uses Babel-Node and Nodemon to constantly refresh the server upon changes to local files.
+```bash
+npm run dev
+```
