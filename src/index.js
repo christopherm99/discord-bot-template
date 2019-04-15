@@ -1,17 +1,17 @@
+import commands from "./commands/index.js";
 import Discord from "discord.js";
-
-import { token, prefix } from "./config.js";
-import * as commands from "./commands/index.js";
 import loadModels from "./faceapi.js";
+import { prefix, token } from "./config.js";
 
 const client = new Discord.Client();
+
 client.login(token).catch(err => {
   console.error(token + err);
 });
 
 client.commands = new Discord.Collection();
 
-Object.values(commands).forEach(command => {
+commands.forEach(command => {
   console.log(`Registering command: ${command.name}`);
   client.commands.set(command.name, command);
 });
@@ -22,17 +22,29 @@ client.on("ready", async () => {
 });
 
 client.on("message", message => {
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
+  if (!message.content.startsWith(prefix) || message.author.bot) {
+    return;
+  }
   const args = message.content.slice(prefix.length).split(/ +/);
   const command = args.shift().toLowerCase();
+
+  message.attachments.forEach(attachment => {
+    console.log(`Attachment: ${attachment.url}`);
+    args.push(attachment.url);
+  });
   console.log(`${message.author}(${command}): ${message.content}`);
-  if (!client.commands.has(command)) return;
-  let com = client.commands.get(command);
-  com.minArgs > args.length
-    ? message.channel.send(`Too few arguments.
+  if (!client.commands.has(command)) {
+    return;
+  }
+  const com = client.commands.get(command);
+
+  if (com.minArgs > args.length) {
+    message.channel.send(`Too few arguments.
 Usage:
 \`\`\`
 ${com.usage}
-\`\`\``)
-    : com.execute(message, args);
+\`\`\``);
+  } else {
+    com.execute(message, args);
+  }
 });

@@ -5,11 +5,16 @@
     },
     "extends": [
         "eslint:recommended",
+        "es/2015/server",
         "plugin:prettier/recommended",
-        "prettier"
+        "prettier",
+        "plugin:promise/recommended",
+        "plugin:sonarjs/recommended"
     ],
     "plugins": [
-        "prettier"
+        "prettier",
+        "promise",
+        "sonarjs"
     ],
     "globals": {
         "Atomics": "readonly",
@@ -36,6 +41,10 @@
             "error",
             "always"
         ],
-        "no-console": "off"
+        "no-console": "off",
+        "func-style": "off",
+        "dot-location": "off",
+        "promise/always-return": "off",
+        "promise/no-nesting": "off"
     }
 }
