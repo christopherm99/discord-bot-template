@@ -37,3 +37,6 @@ This method uses Babel-Node and Nodemon to constantly refresh the server upon ch
 ```bash
 npm run dev
 ```
+
+## Contributing
+See [CONTRIBUTING.md](https://github.com/christopherm99/YeetBot2.0/blob/master/CONTRIBUTING.md)
