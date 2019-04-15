@@ -1,20 +1,11 @@
+import Blob from "node-blob";
+import fetch from "node-fetch";
 import path from "path";
-
-// import nodejs bindings to native tensorflow,
-// not required, but will speed up things drastically (python required)
+import * as canvas from "canvas";
+import * as faceapi from "face-api.js";
 import "@tensorflow/tfjs-node";
 
-// implements nodejs wrappers for HTMLCanvasElement, HTMLImageElement, ImageData
-import * as canvas from "canvas";
-
-// implements window.fetch() in NodeJS
-import fetch from "node-fetch";
-
-// implements blobs in NodeJS
-import Blob from "node-blob";
 global.Blob = Blob;
-
-import * as faceapi from "face-api.js";
 
 // patch nodejs environment, we need to provide an implementation of
 // HTMLCanvasElement and HTMLImageElement, additionally an implementation
