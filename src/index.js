@@ -6,7 +6,7 @@ import { prefix, token } from "./config.js";
 const client = new Discord.Client();
 
 client.login(token).catch(err => {
-  console.error(token + err);
+  console.error(err);
 });
 
 client.commands = new Discord.Collection();
@@ -19,6 +19,7 @@ commands.forEach(command => {
 client.on("ready", async () => {
   await loadModels;
   console.log(`Logged in as ${client.user.username}!`);
+  client.user.setActivity(`${prefix}help for help.`);
 });
 
 client.on("message", message => {
@@ -33,7 +34,15 @@ client.on("message", message => {
     args.push(attachment.url);
   });
   console.log(`${message.author}(${command}): ${message.content}`);
-  if (!client.commands.has(command)) {
+  if (command === "help") {
+    let mesg = "```";
+
+    client.commands.forEach(com => {
+      mesg += `${com.usage}\n`;
+    });
+    mesg += "```";
+    message.channel.send(mesg);
+  } else if (!client.commands.has(command)) {
     return;
   }
   const com = client.commands.get(command);
